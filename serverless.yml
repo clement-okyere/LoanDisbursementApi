@@ -67,6 +67,14 @@ functions:
           path: loans
           cors: true
 
+  GetLoan:
+    handler: src/apps/loanManagement/getLoan.handler
+    events:
+      - http:
+          method: get
+          path: loans/{id}
+          cors: true
+
 resources:
   Resources:
     LoansDynamoDBTable:

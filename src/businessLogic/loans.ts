@@ -10,6 +10,11 @@ export async function getAllLoans(): Promise<Loan[]> {
   return await loanAccess.getAllLoans();
 }
 
+export async function getLoan(loanId: string): Promise<Loan> {
+  return await loanAccess.getLoan(loanId);
+
+}
+
 export async function checkLoanExists(loanId: string): Promise<boolean> {
   const result = await loanAccess.getLoan(loanId);
   return !!result;

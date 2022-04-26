@@ -36,7 +36,7 @@ export class LoanAccess {
     return group;
   }
 
-  async getLoan(loanId: string) {
+  async getLoan(loanId: string): Promise<Loan> {
     const result = await this.docClient
       .get({
         TableName: this.loanTable,
@@ -47,7 +47,7 @@ export class LoanAccess {
       .promise();
 
     console.log('Get Loan ', result.Item);
-    return result.Item;
+    return result.Item as Loan;
   }
 
   async deleteLoan(loanId: string) {
