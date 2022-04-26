@@ -4,7 +4,8 @@
   "description": "New10 Backend Engineer Assignment",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext js,ts  --fix",
+    "lint": "eslint  --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "test": "jest"
   },

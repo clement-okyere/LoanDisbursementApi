@@ -43,7 +43,7 @@ custom:
       migrate: true
 
 functions:
-  GetGroups:
+  GetLoans:
     handler: src/apps/loanManagement/createLoan.handler
     events:
       - http:

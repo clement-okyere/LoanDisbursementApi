@@ -1,5 +1,4 @@
 export enum Status {
-    OFFERED = 'offered',
-    DISBURSED = 'disbursed'
+  OFFERED = 'offered',
+  DISBURSED = 'disbursed',
 }
-

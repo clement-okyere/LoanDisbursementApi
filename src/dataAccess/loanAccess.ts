@@ -3,6 +3,9 @@ import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 
 import { Loan } from '../models/loan'
 
+/**
+ * Abstraction to perform Loan operation from DynamoDb
+ */
 export class LoanAccess {
 
   constructor(
@@ -11,7 +14,7 @@ export class LoanAccess {
   }
 
   async getAllLoans(): Promise<Loan[]> {
-    console.log('Getting all loans')
+    console.log('Getting all loans');
 
     const result = await this.docClient.scan({
       TableName: this.loanTable
