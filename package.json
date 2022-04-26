@@ -4,8 +4,19 @@
   "description": "New10 Backend Engineer Assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "lint": "eslint . --ext js,ts --cache --fix",
+  "prettier": "prettier --list-different './**/*.{js,ts}'",
+  "typecheck": "tsc --noEmit",
+  "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Clement Okyere",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
+  }
 }
