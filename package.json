@@ -4,19 +4,22 @@
   "description": "New10 Backend Engineer Assignment",
   "main": "index.js",
   "scripts": {
-  "lint": "eslint . --ext js,ts --cache --fix",
-  "prettier": "prettier --list-different './**/*.{js,ts}'",
-  "typecheck": "tsc --noEmit",
-  "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext js,ts --cache --fix",
+    "prettier": "prettier --list-different './**/*.{js,ts}'",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
   },
   "author": "Clement Okyere",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.2"
+    "jest": "^28.0.0",
+    "prettier": "^2.6.2",
+    "ts-jest": "^27.1.4"
   }
 }
