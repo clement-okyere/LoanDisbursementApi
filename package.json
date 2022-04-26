@@ -1,0 +1,11 @@
+{
+  "name": "new10assignment",
+  "version": "1.0.0",
+  "description": "New10 Backend Engineer Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Clement Okyere",
+  "license": "ISC"
+}
