@@ -1,39 +1,35 @@
 import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import 'source-map-support/register';
-
-import { CreateLoanRequest } from '../../requests/CreateLoanRequest';
-import { createLoan } from '../../businessLogic/loans';
-import { validate } from '../../utils/validation';
-import loanSchema from '../../schemas/loan';
+import { checkLoanExists, deleteLoan } from '../../businessLogic/loans';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Processing event: ', event);
 
-  const newLoan: CreateLoanRequest = JSON.parse(event.body);
+  const { id } = event.pathParameters;
 
-  // validate loan payload
-  const { success, message } = validate(loanSchema, newLoan);
+  // check if loan exists
+  const loanExists = await checkLoanExists(id);
 
-  if (!success)
+  if (!loanExists)
     return {
-      statusCode: 400,
+      statusCode: 404,
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
-        message,
+        message: `Load with id ${id} does not exist`,
       }),
     };
 
-  const newItem = await createLoan(newLoan);
+  await deleteLoan(id);
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({
-      newItem,
+      message: `Load deleted successfully`,
     }),
   };
 };

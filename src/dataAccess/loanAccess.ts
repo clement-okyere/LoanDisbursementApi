@@ -35,6 +35,36 @@ export class LoanAccess {
 
     return group;
   }
+
+  async getLoan(loanId: string) {
+    const result = await this.docClient
+      .get({
+        TableName: this.loanTable,
+        Key: {
+          id: loanId,
+        },
+      })
+      .promise();
+
+    console.log('Get Loan ', result.Item);
+    return result.Item;
+  }
+
+  async deleteLoan(loanId: string) {
+    const result = await this.docClient
+      .delete({
+        TableName: this.loanTable,
+        Key: {
+          id: loanId,
+        },
+        ReturnValues: 'ALL_OLD',
+      })
+      .promise();
+
+    console.log('Get Loan ', result);
+    console.log('dynamodb delete response', result.$response.data);
+    return result.$response.data;
+  }
 }
 
 function createDynamoDBClient() {

@@ -43,11 +43,27 @@ custom:
       migrate: true
 
 functions:
-  GetLoans:
+  CreateLoan:
     handler: src/apps/loanManagement/createLoan.handler
     events:
       - http:
           method: post
+          path: loans
+          cors: true
+
+  DeleteLoan:
+    handler: src/apps/loanManagement/deleteLoan.handler
+    events:
+      - http:
+          method: delete
+          path: loans/{id}
+          cors: true
+
+  GetLoans:
+    handler: src/apps/loanManagement/getLoans.handler
+    events:
+      - http:
+          method: get
           path: loans
           cors: true
 

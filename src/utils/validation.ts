@@ -10,6 +10,10 @@ export const validate = (schema, model): IValidate => {
       success: false,
       message: getErrorMessage(error),
     };
+
+  return {
+    success: true,
+  };
 };
 
 export const getErrorMessage = (error): string => {
