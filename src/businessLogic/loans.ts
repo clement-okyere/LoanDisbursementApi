@@ -16,11 +16,11 @@ export async function getAllLoans(): Promise<Loan[]> {
  * @returns - the created loan item from DynamoDb
  */
 
-export async function createLoan(createGroupRequest: CreateLoanRequest): Promise<Loan> {
+export async function createLoan(createLoanRequest: CreateLoanRequest): Promise<Loan> {
   const itemId = uuid.v4();
 
   return await loanAccess.createLoan({
     id: itemId,
-    ...createGroupRequest,
+    ...createLoanRequest,
   });
 }
