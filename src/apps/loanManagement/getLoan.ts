@@ -5,8 +5,6 @@ import { httpResponse } from '../../utils/helpers';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    console.log('Processing event: ', event);
-
     const { id } = event.pathParameters;
 
     // check if loan exists

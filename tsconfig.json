@@ -8,5 +8,5 @@
       "target": "es2017",
       "outDir": "lib",
     },
-    "exclude": ["node_modules", ".webpack", ".dynamodb", "**/*.spec.ts", "**/*.test.ts"]
+    "exclude": ["node_modules", ".webpack", ".dynamodb", "**/*.test.ts"]
   }

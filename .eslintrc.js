@@ -12,7 +12,7 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     settings: {
       'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx'],
+        '@typescript-eslint/parser': ['.ts', 'spec.ts', '.tsx'],
       },
       'import/resolver': {
         typescript: {},
@@ -26,5 +26,7 @@ module.exports = {
     },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "@typescript-eslint/ban-ts-comment": "off"
     },
   };

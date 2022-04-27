@@ -5,8 +5,6 @@ import { httpResponse } from '../../utils/helpers';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    console.log('Processing event: ', event);
-
     const { id } = event.pathParameters;
 
     // check if loan exists
@@ -15,7 +13,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     if (!loanExists)
       return httpResponse(
         {
-          message: `Load with id ${id} does not exist`,
+          message: `Loan with id ${id} does not exist`,
         },
         404,
         false,
@@ -25,7 +23,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
     return httpResponse(
       {
-        message: `Load deleted successfully`,
+        message: `Loan deleted successfully`,
       },
       200,
     );

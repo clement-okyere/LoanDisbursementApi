@@ -19,7 +19,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     console.log('Error: ', e);
     return httpResponse(
       {
-        message: 'An error occurred',
+        message: `An error occurred`,
       },
       500,
     );

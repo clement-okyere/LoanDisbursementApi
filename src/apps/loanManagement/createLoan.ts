@@ -11,8 +11,6 @@ const OPENKVK_API_KEY = process.env.OPENKVK_API_KEY;
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    console.log('Processing event: ', event);
-
     // get company Id from query parameter
     let companyId: string | undefined;
 
@@ -59,15 +57,13 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         );
       }
 
-      console.log('company api calll response', data);
-
       // add company response
       newLoan.company = data;
     } catch (e) {
       console.log('An error occured while updating the loan status', e);
       return httpResponse(
         {
-          message: 'An error occured while updating the loan status',
+          message: `An error occured while updating the loan status ${e.message}`,
         },
         400,
       );
