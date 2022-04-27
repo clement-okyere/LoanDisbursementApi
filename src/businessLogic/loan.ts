@@ -7,17 +7,20 @@ import { CreateLoanRequest } from '../requests/CreateLoanRequest';
 const loanAccess = new LoanAccess();
 
 export async function getAllLoans(): Promise<Loan[]> {
-  return await loanAccess.getAllLoans();
+  return loanAccess.getAllLoans();
 }
 
 export async function getLoan(loanId: string): Promise<Loan> {
-  return await loanAccess.getLoan(loanId);
-
+  return loanAccess.getLoan(loanId);
 }
 
 export async function checkLoanExists(loanId: string): Promise<boolean> {
   const result = await loanAccess.getLoan(loanId);
   return !!result;
+}
+
+export async function updateLoan(loanId: string, field: string, value: any): Promise<AWS.DynamoDB.DocumentClient.UpdateItemOutput | void> {
+  return loanAccess.updateLoan(loanId, field, value);
 }
 
 export async function deleteLoan(loanId: string): Promise<AWS.DynamoDB.DocumentClient.DeleteItemOutput | void> {

@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.17",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^27.4.1",
     "@types/joi": "^17.2.3",
     "@types/node": "^10.12.18",
@@ -42,6 +43,7 @@
     "webpack": "^4.29.0"
   },
   "dependencies": {
+    "axios": "^0.27.1",
     "joi": "^17.6.0"
   }
 }

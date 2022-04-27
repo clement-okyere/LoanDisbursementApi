@@ -2,19 +2,34 @@ import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } f
 import 'source-map-support/register';
 
 import { CreateLoanRequest } from '../../requests/CreateLoanRequest';
-import { createLoan } from '../../businessLogic/loans';
+import { createLoan } from '../../businessLogic/loan';
 import { validate } from '../../utils/validation';
-import loanSchema from '../../schemas/loan';
+import { loanSchema } from '../../schemas/loan';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Processing event: ', event);
 
+  // get company Id from query parameter
+  const { companyId } = event.queryStringParameters;
+
+  if(!companyId) {
+    return {
+      statusCode: 400,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        message: 'companyId query string parameter is required!',
+      }),
+    };
+  }
+
   const newLoan: CreateLoanRequest = JSON.parse(event.body);
 
   // validate loan payload
-  const { success, message } = validate(loanSchema, newLoan);
+  const { valid, message } = validate(loanSchema, newLoan);
 
-  if (!success)
+  if (!valid)
     return {
       statusCode: 400,
       headers: {

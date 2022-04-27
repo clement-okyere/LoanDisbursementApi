@@ -1,5 +1,5 @@
 interface IValidate {
-  success: boolean;
+  valid: boolean;
   message?: string;
 }
 
@@ -7,12 +7,12 @@ export const validate = (schema, model): IValidate => {
   const { error } = schema.validate(model);
   if (error)
     return {
-      success: false,
+      valid: false,
       message: getErrorMessage(error),
     };
 
   return {
-    success: true,
+    valid: true,
   };
 };
 

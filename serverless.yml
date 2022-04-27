@@ -18,6 +18,8 @@ provider:
   environment:
     LOANS_TABLE: Loans-${self:provider.stage}
     IS_OFFLINE: true
+    DISBURSEMENT_API_BASE_URL: http://localhost:3000/dev
+    OPENKVK_BASE_URL: https://api.overheid.io/openkvk
 
 
   iamRoleStatements:
@@ -73,6 +75,23 @@ functions:
       - http:
           method: get
           path: loans/{id}
+          cors: true
+
+
+  UpdateLoanStatus:
+    handler: src/apps/loanManagement/updateLoanStatus.handler
+    events:
+      - http:
+          method: patch
+          path: loans/{id}
+          cors: true
+
+  DisburseLoan:
+    handler: src/apps/disbursement/disburseLoan.handler
+    events:
+      - http:
+          method: patch
+          path: disburse/{loanId}
           cors: true
 
 resources:

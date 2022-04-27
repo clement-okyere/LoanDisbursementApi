@@ -50,6 +50,30 @@ export class LoanAccess {
     return result.Item as Loan;
   }
 
+  async updateLoan(loanId: string, field: string, value: any) {
+    console.log('update loan params', loanId, field, value);
+    const result = await this.docClient
+      .update({
+        TableName: this.loanTable,
+        Key: {
+          id: loanId,
+        },
+        UpdateExpression: "set #MyField  = :x",
+        ExpressionAttributeNames: {
+          "#MyField": field
+      },
+      ExpressionAttributeValues: {
+          ":x": value,
+
+      }
+      })
+      .promise();
+
+    console.log('Get Loan ', result);
+    console.log('dynamodb update response', result.$response.data);
+    return result.$response.data;
+  }
+
   async deleteLoan(loanId: string) {
     const result = await this.docClient
       .delete({
