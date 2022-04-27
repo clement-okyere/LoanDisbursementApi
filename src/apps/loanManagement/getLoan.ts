@@ -1,8 +1,11 @@
 import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import 'source-map-support/register';
 import { checkLoanExists, getLoan } from '../../businessLogic/loan';
+import { httpResponse } from '../../utils/helpers';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+
+try {
   console.log('Processing event: ', event);
 
   const { id } = event.pathParameters;
@@ -11,25 +14,31 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const loanExists = await checkLoanExists(id);
 
   if (!loanExists)
-    return {
-      statusCode: 404,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({
-        message: `Load with id ${id} does not exist`,
-      }),
-    };
+
+  return httpResponse(
+    {
+    message: `Load with id ${id} does not exist`,
+    },
+    404,
+    )
+
 
   const loan = await getLoan(id);
-
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
+ 
+  return httpResponse(
+    {
+     ...loan
     },
-    body: JSON.stringify({
-      ...loan,
-    }),
-  };
+    200,
+    )
+}
+catch(e) {
+    console.log('Error: ', e)
+    return httpResponse(
+      {
+        message: 'An error occurred'
+      },
+      500
+    ) 
+}
 };
