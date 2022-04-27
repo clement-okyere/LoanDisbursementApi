@@ -12,7 +12,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   // get company Id from query parameter
   const { companyId } = event.queryStringParameters;
 
-  if(!companyId) {
+  if (!companyId) {
     return {
       statusCode: 400,
       headers: {

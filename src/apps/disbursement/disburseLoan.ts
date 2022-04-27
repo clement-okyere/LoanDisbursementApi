@@ -4,7 +4,7 @@ import 'source-map-support/register';
 import { PatchLoanRequest } from '../../requests/PatchLoanRequest';
 import { updateLoan } from '../../businessLogic/loan';
 import { validate } from '../../utils/validation';
-import { patchedLoanSchema } from '../../schemas/loan'
+import { patchedLoanSchema } from '../../schemas/loan';
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   // console.log('Processing event: ', event);
@@ -28,8 +28,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
       }),
     };
 
-  const {status} = payload;
-  await updateLoan(loanId, "status", status);
+  const { status } = payload;
+  await updateLoan(loanId, 'status', status);
 
   return {
     statusCode: 200,

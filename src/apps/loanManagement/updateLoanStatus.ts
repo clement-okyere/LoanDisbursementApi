@@ -2,9 +2,8 @@ import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } f
 import 'source-map-support/register';
 import { PatchLoanRequest } from '../../requests/PatchLoanRequest';
 import { validate } from '../../utils/validation';
-import { patchedLoanSchema } from '../../schemas/loan'
-import  axios from "axios";
-
+import { patchedLoanSchema } from '../../schemas/loan';
+import axios from 'axios';
 
 const DISBURSEMENT_API_BASE_URL = process.env.DISBURSEMENT_API_BASE_URL;
 
@@ -37,8 +36,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   // make call to disbursement api
   try {
     const { status } = await axios.patch(`${DISBURSEMENT_API_BASE_URL}/disburse/${id}`, payload);
-    if(status === 200)
-    return {
+    if (status === 200)
+      return {
         statusCode: 201,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -47,20 +46,17 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
           message: 'updated loan status successfully',
         }),
       };
-    console.log('result from disbursement api call')
-  }
-  catch(e) {
-    console.log('An error occured while updating the loan status', e)
+    console.log('result from disbursement api call');
+  } catch (e) {
+    console.log('An error occured while updating the loan status', e);
     return {
-        statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({
-          message: 'An error occured while updating the loan status',
-        }),
-      };
-    
+      statusCode: 400,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        message: 'An error occured while updating the loan status',
+      }),
+    };
   }
-
 };

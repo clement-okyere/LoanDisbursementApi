@@ -58,14 +58,13 @@ export class LoanAccess {
         Key: {
           id: loanId,
         },
-        UpdateExpression: "set #MyField  = :x",
+        UpdateExpression: 'set #MyField  = :x',
         ExpressionAttributeNames: {
-          "#MyField": field
-      },
-      ExpressionAttributeValues: {
-          ":x": value,
-
-      }
+          '#MyField': field,
+        },
+        ExpressionAttributeValues: {
+          ':x': value,
+        },
       })
       .promise();
 

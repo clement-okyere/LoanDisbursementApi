@@ -19,7 +19,11 @@ export async function checkLoanExists(loanId: string): Promise<boolean> {
   return !!result;
 }
 
-export async function updateLoan(loanId: string, field: string, value: any): Promise<AWS.DynamoDB.DocumentClient.UpdateItemOutput | void> {
+export async function updateLoan(
+  loanId: string,
+  field: string,
+  value: any,
+): Promise<AWS.DynamoDB.DocumentClient.UpdateItemOutput | void> {
   return loanAccess.updateLoan(loanId, field, value);
 }
 
