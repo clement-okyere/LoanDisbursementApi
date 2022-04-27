@@ -25,15 +25,15 @@ export class LoanAccess {
     return items as Loan[];
   }
 
-  async createLoan(group: Loan): Promise<Loan> {
+  async createLoan(loan: Loan): Promise<Loan> {
     await this.docClient
       .put({
         TableName: this.loanTable,
-        Item: group,
+        Item: loan,
       })
       .promise();
 
-    return group;
+    return loan;
   }
 
   async getLoan(loanId: string): Promise<Loan> {

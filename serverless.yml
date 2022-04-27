@@ -20,6 +20,7 @@ provider:
     IS_OFFLINE: true
     DISBURSEMENT_API_BASE_URL: http://localhost:3000/dev
     OPENKVK_BASE_URL: https://api.overheid.io/openkvk
+    OPENKVK_API_KEY: e03b293a4698ba78d9b9b4d4f91473fb4c6feeaa022a6bf793338983e107004b
 
 
   iamRoleStatements:
