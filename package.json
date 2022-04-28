@@ -7,7 +7,9 @@
     "lint": "eslint src && eslint test",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "dynamodb-start": "serverless dynamodb start", 
+    "start": "NODE_ENV=development serverless offline start", 
+    "test": "NODE_ENV=test jest"
   },
   "author": "Clement Okyere",
   "license": "ISC",
