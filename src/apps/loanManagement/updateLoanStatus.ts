@@ -34,9 +34,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
           },
           201,
         );
-      console.log('result from disbursement api call');
     } catch (e) {
-      console.log('An error occured while updating the loan status', e);
       return httpResponse(
         {
           message: 'An error occured while updating the loan status',

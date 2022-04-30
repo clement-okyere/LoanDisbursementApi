@@ -1,4 +1,4 @@
-service: udagram-app
+service: node-js-assignment
 
 
 # Add the serverless-webpack plugin
