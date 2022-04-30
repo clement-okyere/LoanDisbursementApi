@@ -4,7 +4,7 @@
   "description": "New10 Backend Engineer Assignment",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src && eslint test",
+    "lint": "eslint src && eslint tests",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "dynamodb-start": "serverless dynamodb start",
