@@ -25,8 +25,11 @@
 
 - To start dynamodb, run `dynamodb-start`
 
-- Run for development: npm start
+- Run for development: npm 
+
+- The swagger documentation can be accessed on  http://localhost:3000/dev/swagger  
 
 - Check lint issues: npm lint
+
 
 

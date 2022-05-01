@@ -3,8 +3,8 @@ service: node-js-assignment
 
 # Add the serverless-webpack plugin
 plugins:
+  - serverless-auto-swagger
   - serverless-webpack
-  - serverless-aws-documentation
   - serverless-dynamodb-local
   - serverless-offline
   
@@ -20,7 +20,7 @@ provider:
     IS_OFFLINE: true
     DISBURSEMENT_API_BASE_URL: http://localhost:3000/dev
     OPENKVK_BASE_URL: https://api.overheid.io/openkvk
-    OPENKVK_API_KEY: e03b293a4698ba78d9b9b4d4f91473fb4c6feeaa022a6bf793338983e107004b # Replace with your API KEY - would have used serverless-dotenv-plugin for this
+    OPENKVK_API_KEY: xxxxxxxxxxxxxx # Replace with your API KEY - would have used serverless-dotenv-plugin for this
 
 
   iamRoleStatements:
@@ -45,6 +45,11 @@ custom:
       inMemory: true
       migrate: true
 
+  autoswagger:
+      useStage: true
+      basePath: /${self:provider.stage}
+
+
 functions:
   CreateLoan:
     handler: src/apps/loanManagement/createLoan.handler
@@ -53,6 +58,12 @@ functions:
           method: post
           path: loans
           cors: true
+          bodyType: LoanRequestBody
+          queryStringParameters:
+            companyId:
+              required: true
+              type: string
+              description: Company Id for OPENKVK api
 
   DeleteLoan:
     handler: src/apps/loanManagement/deleteLoan.handler
@@ -86,6 +97,7 @@ functions:
           method: patch
           path: loans/{id}
           cors: true
+          bodyType: LoanUpdateRequestBody
 
   DisburseLoan:
     handler: src/apps/disbursement/disburseLoan.handler
@@ -94,6 +106,7 @@ functions:
           method: patch
           path: disburse/{loanId}
           cors: true
+          bodyType: LoanUpdateRequestBody
 
 resources:
   Resources:
