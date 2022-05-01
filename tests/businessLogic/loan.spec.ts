@@ -22,5 +22,4 @@ describe.only('Business Logic', () => {
     const result = await checkLoanExists(loanId);
     expect(result).toBeFalsy();
   });
-
 });
