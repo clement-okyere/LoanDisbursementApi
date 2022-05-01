@@ -8,7 +8,7 @@
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "dynamodb-start": "serverless dynamodb start",
-    "start": "NODE_ENV=development serverless offline start",
+    "start": "serverless offline start",
     "test": "NODE_ENV=test jest --coverage"
   },
   "author": "Clement Okyere",

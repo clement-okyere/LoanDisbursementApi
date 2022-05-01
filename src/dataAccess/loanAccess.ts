@@ -6,7 +6,7 @@ import { Loan } from '../models/loan';
 /**
  * Abstraction to perform Loan operation from DynamoDb
  */
-export class LoanAccess {
+export default class LoanAccess {
   constructor(
     private readonly docClient: DocumentClient = createDynamoDBClient(),
     private readonly loanTable = process.env.LOANS_TABLE,

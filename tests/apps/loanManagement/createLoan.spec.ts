@@ -155,7 +155,7 @@ describe('Create Loan', function () {
   });
 
   it('adds loan successfully when company is  active', async function () {
-    // @ts-ignore comment
+    // @ts-ignore
     axios.get.mockResolvedValueOnce({ data: company });
 
     // @ts-ignore comment

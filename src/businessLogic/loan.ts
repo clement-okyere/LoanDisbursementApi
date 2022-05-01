@@ -1,7 +1,7 @@
 import * as uuid from 'uuid';
 
 import { Loan } from '../models/loan';
-import { LoanAccess } from '../dataAccess/loanAccess';
+import LoanAccess from '../dataAccess/loanAccess';
 import { CreateLoanRequest } from '../requests/CreateLoanRequest';
 
 const loanAccess = new LoanAccess();

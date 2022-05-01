@@ -1,4 +1,11 @@
 module.exports = {
+  globals: {
+    'ts-jest': {
+      diagnostics: {
+        ignoreCodes: [151001]
+      }
+    }
+  },
   "roots": [
     "<rootDir>/tests"
   ],

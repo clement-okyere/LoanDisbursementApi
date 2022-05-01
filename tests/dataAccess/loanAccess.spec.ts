@@ -1,4 +1,4 @@
-import { LoanAccess } from '../../src/dataAccess/loanAccess';
+import LoanAccess from '../../src/dataAccess/loanAccess';
 import { createLoanResponse } from '../fixtures/createLoanRespose';
 import { Loan } from '../../src/models/loan';
 import { getLoanResponse } from '../fixtures/getLoanResponse';

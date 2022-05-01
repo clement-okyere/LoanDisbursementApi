@@ -1,6 +1,5 @@
 ## Node.js Assignment (Serverless)
 
-(Test Coverage is not 100% yet due to time constraint)
 
 ### Requirements
 - Node
