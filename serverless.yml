@@ -1,4 +1,5 @@
 service: node-js-assignment
+frameworkVersion: "^3.0.0"
 
 
 # Add the serverless-webpack plugin
@@ -7,7 +8,9 @@ plugins:
   - serverless-webpack
   - serverless-dynamodb-local
   - serverless-offline
-  
+
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs14.x
@@ -20,7 +23,7 @@ provider:
     IS_OFFLINE: true
     DISBURSEMENT_API_BASE_URL: http://localhost:3000/dev
     OPENKVK_BASE_URL: https://api.overheid.io/openkvk
-    OPENKVK_API_KEY: xxxxxxxxxxxxxx # Replace with your API KEY - would have used serverless-dotenv-plugin for this
+    OPENKVK_API_KEY: ${env:OPENKVK_API_KEY} 
 
 
   iamRoleStatements:

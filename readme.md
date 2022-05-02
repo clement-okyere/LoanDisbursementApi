@@ -19,13 +19,15 @@
 
 - Install dependencies: npm install
 
-- Install local dynamodb: serverless dynamodb install
+- Install local dynamodb: serverless dynamodb install   
+
+- create .env file `touch .env`
+
+- add the OPENKVK_API_KEY env variable to the .env file `OPENKVK_API_KEY=XXXXXXXXXXXXXXXXXXXX`
 
 - Run tests: npm test
 
-- To start dynamodb, run `dynamodb-start`
-
-- Run for development: npm 
+- Run for development: npm start
 
 - The swagger documentation can be accessed on  http://localhost:3000/dev/swagger  
 
